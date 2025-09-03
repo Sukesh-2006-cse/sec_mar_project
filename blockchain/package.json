@@ -1,0 +1,35 @@
+{
+  "name": "trustx-blockchain",
+  "version": "1.0.0",
+  "description": "TrustX Blockchain Smart Contracts and Infrastructure",
+  "main": "index.js",
+  "scripts": {
+    "compile": "truffle compile",
+    "migrate": "truffle migrate",
+    "test": "truffle test",
+    "console": "truffle console",
+    "deploy": "truffle migrate --network polygon"
+  },
+  "dependencies": {
+    "web3": "^4.1.1",
+    "@openzeppelin/contracts": "^4.9.3",
+    "truffle": "^5.11.5",
+    "@truffle/hdwallet-provider": "^2.1.14",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@truffle/contract": "^4.6.25",
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0"
+  },
+  "keywords": [
+    "blockchain",
+    "smart-contracts",
+    "ethereum",
+    "polygon",
+    "fraud-detection",
+    "sebi"
+  ],
+  "author": "TrustX Team",
+  "license": "MIT"
+}
