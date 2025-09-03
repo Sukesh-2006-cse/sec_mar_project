@@ -23,12 +23,18 @@ function MainTabs() {
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
-          if (route.name === 'Home') iconName = 'home';
-          else if (route.name === 'Scan') iconName = 'qr-code-scanner';
-          else if (route.name === 'Alerts') iconName = 'notifications';
-          else if (route.name === 'Report') iconName = 'report-problem';
-          else if (route.name === 'Profile') iconName = 'person';
-          
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Scan') {
+            iconName = 'qr-code-scanner';
+          } else if (route.name === 'Alerts') {
+            iconName = 'notifications';
+          } else if (route.name === 'Report') {
+            iconName = 'report-problem';
+          } else if (route.name === 'Profile') {
+            iconName = 'person';
+          }
+
           return <Icon name={iconName} size={size} color={color} />;
         },
         tabBarActiveTintColor: '#4F46E5',
@@ -52,14 +58,14 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="MainTabs" component={MainTabs} />
-        <Stack.Screen 
-          name="Result" 
+        <Stack.Screen
+          name="Result"
           component={ResultScreen}
-          options={{ 
+          options={{
             headerShown: true,
             title: 'Verification Result',
             headerStyle: { backgroundColor: '#4F46E5' },
-            headerTintColor: 'white'
+            headerTintColor: 'white',
           }}
         />
       </Stack.Navigator>

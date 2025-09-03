@@ -19,14 +19,54 @@ export default function ReportFraudScreen({ navigation }) {
   const [isAnonymous, setIsAnonymous] = useState(true);
 
   const fraudTypes = [
-    { id: 'pump-dump', title: 'Pump & Dump', icon: 'trending-up', description: 'Stock price manipulation' },
-    { id: 'fake-advisor', title: 'Fake Advisor', icon: 'person-outline', description: 'Unlicensed investment advisor' },
-    { id: 'ponzi', title: 'Ponzi Scheme', icon: 'account-balance', description: 'Fraudulent investment operation' },
-    { id: 'deepfake', title: 'Deepfake Content', icon: 'face', description: 'AI-generated fake videos/audio' },
-    { id: 'phishing', title: 'Phishing Site', icon: 'security', description: 'Fake website stealing credentials' },
-    { id: 'fake-app', title: 'Fake Trading App', icon: 'smartphone', description: 'Malicious mobile application' },
-    { id: 'social-media', title: 'Social Media Scam', icon: 'share', description: 'WhatsApp/Telegram fraud' },
-    { id: 'other', title: 'Other', icon: 'more-horiz', description: 'Other type of fraud' },
+    {
+      id: 'pump-dump',
+      title: 'Pump & Dump',
+      icon: 'trending-up',
+      description: 'Stock price manipulation',
+    },
+    {
+      id: 'fake-advisor',
+      title: 'Fake Advisor',
+      icon: 'person-outline',
+      description: 'Unlicensed investment advisor',
+    },
+    {
+      id: 'ponzi',
+      title: 'Ponzi Scheme',
+      icon: 'account-balance',
+      description: 'Fraudulent investment operation',
+    },
+    {
+      id: 'deepfake',
+      title: 'Deepfake Content',
+      icon: 'face',
+      description: 'AI-generated fake videos/audio',
+    },
+    {
+      id: 'phishing',
+      title: 'Phishing Site',
+      icon: 'security',
+      description: 'Fake website stealing credentials',
+    },
+    {
+      id: 'fake-app',
+      title: 'Fake Trading App',
+      icon: 'smartphone',
+      description: 'Malicious mobile application',
+    },
+    {
+      id: 'social-media',
+      title: 'Social Media Scam',
+      icon: 'share',
+      description: 'WhatsApp/Telegram fraud',
+    },
+    {
+      id: 'other',
+      title: 'Other',
+      icon: 'more-horiz',
+      description: 'Other type of fraud',
+    },
   ];
 
   const handleSubmit = () => {
@@ -47,8 +87,8 @@ export default function ReportFraudScreen({ navigation }) {
             setDescription('');
             setEvidenceText('');
             navigation.goBack();
-          }
-        }
+          },
+        },
       ]
     );
   };
@@ -58,7 +98,9 @@ export default function ReportFraudScreen({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Report Investment Fraud</Text>
-        <Text style={styles.headerSubtitle}>Help protect the community with blockchain-verified reports</Text>
+        <Text style={styles.headerSubtitle}>
+          Help protect the community with blockchain-verified reports
+        </Text>
       </View>
 
       <ScrollView style={styles.content}>
@@ -71,19 +113,25 @@ export default function ReportFraudScreen({ navigation }) {
                 key={fraudType.id}
                 style={[
                   styles.fraudTypeCard,
-                  selectedFraudType === fraudType.id && styles.selectedFraudType
+                  selectedFraudType === fraudType.id &&
+                    styles.selectedFraudType,
                 ]}
                 onPress={() => setSelectedFraudType(fraudType.id)}
               >
-                <Icon 
-                  name={fraudType.icon} 
-                  size={24} 
-                  color={selectedFraudType === fraudType.id ? '#4F46E5' : '#6B7280'} 
+                <Icon
+                  name={fraudType.icon}
+                  size={24}
+                  color={
+                    selectedFraudType === fraudType.id ? '#4F46E5' : '#6B7280'
+                  }
                 />
-                <Text style={[
-                  styles.fraudTypeText,
-                  selectedFraudType === fraudType.id && styles.selectedFraudTypeText
-                ]}>
+                <Text
+                  style={[
+                    styles.fraudTypeText,
+                    selectedFraudType === fraudType.id &&
+                      styles.selectedFraudTypeText,
+                  ]}
+                >
                   {fraudType.title}
                 </Text>
               </TouchableOpacity>
@@ -126,7 +174,8 @@ export default function ReportFraudScreen({ navigation }) {
             <View style={styles.privacyInfo}>
               <Text style={styles.privacyTitle}>Anonymous Reporting</Text>
               <Text style={styles.privacySubtitle}>
-                Your identity will be protected using blockchain privacy features
+                Your identity will be protected using blockchain privacy
+                features
               </Text>
             </View>
             <Switch
@@ -142,8 +191,9 @@ export default function ReportFraudScreen({ navigation }) {
         <View style={styles.blockchainInfo}>
           <Icon name="security" size={24} color="#4F46E5" />
           <Text style={styles.blockchainText}>
-            Your report will be immutably recorded on blockchain, ensuring transparency while protecting your privacy. 
-            This creates a permanent, tamper-proof record that authorities can verify.
+            Your report will be immutably recorded on blockchain, ensuring
+            transparency while protecting your privacy. This creates a
+            permanent, tamper-proof record that authorities can verify.
           </Text>
         </View>
       </ScrollView>

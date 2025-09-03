@@ -16,31 +16,70 @@ const { width } = Dimensions.get('window');
 export default function HomeScreen({ navigation }) {
   const [portfolioData] = useState({
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-    datasets: [{
-      data: [20, 45, 28, 80, 99, 43],
-      strokeWidth: 2,
-    }],
+    datasets: [
+      {
+        data: [20, 45, 28, 80, 99, 43],
+        strokeWidth: 2,
+      },
+    ],
   });
 
   const recentAlerts = [
-    { id: 1, type: 'Pump & Dump', stock: 'ABC Ltd', risk: 'HIGH', time: '2 hours ago' },
-    { id: 2, type: 'Fake Advisor', entity: 'XYZ Investments', risk: 'MEDIUM', time: '5 hours ago' },
-    { id: 3, type: 'Deepfake Video', stock: 'DEF Corp', risk: 'HIGH', time: '1 day ago' },
+    {
+      id: 1,
+      type: 'Pump & Dump',
+      stock: 'ABC Ltd',
+      risk: 'HIGH',
+      time: '2 hours ago',
+    },
+    {
+      id: 2,
+      type: 'Fake Advisor',
+      entity: 'XYZ Investments',
+      risk: 'MEDIUM',
+      time: '5 hours ago',
+    },
+    {
+      id: 3,
+      type: 'Deepfake Video',
+      stock: 'DEF Corp',
+      risk: 'HIGH',
+      time: '1 day ago',
+    },
   ];
 
   const quickActions = [
-    { title: 'Scan QR Code', icon: 'qr-code-scanner', screen: 'Scan', color: '#10B981' },
-    { title: 'Verify Advisor', icon: 'verified-user', screen: 'Scan', color: '#3B82F6' },
+    {
+      title: 'Scan QR Code',
+      icon: 'qr-code-scanner',
+      screen: 'Scan',
+      color: '#10B981',
+    },
+    {
+      title: 'Verify Advisor',
+      icon: 'verified-user',
+      screen: 'Scan',
+      color: '#3B82F6',
+    },
     { title: 'Check Link', icon: 'link', screen: 'Scan', color: '#F59E0B' },
-    { title: 'Report Fraud', icon: 'report', screen: 'Report', color: '#EF4444' },
+    {
+      title: 'Report Fraud',
+      icon: 'report',
+      screen: 'Report',
+      color: '#EF4444',
+    },
   ];
 
   const getRiskColor = (risk) => {
     switch (risk) {
-      case 'HIGH': return '#EF4444';
-      case 'MEDIUM': return '#F59E0B';
-      case 'LOW': return '#10B981';
-      default: return '#6B7280';
+      case 'HIGH':
+        return '#EF4444';
+      case 'MEDIUM':
+        return '#F59E0B';
+      case 'LOW':
+        return '#10B981';
+      default:
+        return '#6B7280';
     }
   };
 
@@ -49,7 +88,9 @@ export default function HomeScreen({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>TrustX</Text>
-        <Text style={styles.headerSubtitle}>AI + Blockchain Investor Protection</Text>
+        <Text style={styles.headerSubtitle}>
+          AI + Blockchain Investor Protection
+        </Text>
       </View>
 
       {/* Portfolio Security Score */}
@@ -71,7 +112,7 @@ export default function HomeScreen({ navigation }) {
             backgroundGradientTo: '#ffffff',
             decimalPlaces: 0,
             color: (opacity = 1) => `rgba(79, 70, 229, ${opacity})`,
-            style: { borderRadius: 16 }
+            style: { borderRadius: 16 },
           }}
           bezier
           style={styles.chart}
@@ -110,10 +151,17 @@ export default function HomeScreen({ navigation }) {
             </View>
             <View style={styles.alertContent}>
               <Text style={styles.alertTitle}>{alert.type}</Text>
-              <Text style={styles.alertSubtitle}>{alert.stock || alert.entity}</Text>
+              <Text style={styles.alertSubtitle}>
+                {alert.stock || alert.entity}
+              </Text>
               <Text style={styles.alertTime}>{alert.time}</Text>
             </View>
-            <View style={[styles.riskBadge, { backgroundColor: getRiskColor(alert.risk) }]}>
+            <View
+              style={[
+                styles.riskBadge,
+                { backgroundColor: getRiskColor(alert.risk) },
+              ]}
+            >
               <Text style={styles.riskText}>{alert.risk}</Text>
             </View>
           </View>
