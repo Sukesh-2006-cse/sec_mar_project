@@ -11,24 +11,35 @@ TrustX is a React Native mobile application that combines AI and blockchain tech
 - **Community Protection**: Crowdsourced fraud reporting system
 - **Investment Security Score**: Portfolio security analysis and risk assessment
 
+# TrustX - AI + Blockchain Investor Protection
+
+TrustX is a comprehensive mobile and web platform that combines AI and blockchain technology to protect investors from financial fraud. The application helps users verify suspicious investment opportunities, detect fraudulent activities, and report scams to help protect the investment community.
+
 ## Project Structure
+
+The project is organized with separate frontend and backend directories for clean separation of concerns:
 
 ```
 sec_mar_project/
-├── App.js                      # Main app component with navigation setup
-├── index.js                    # React Native entry point
-├── package.json                # Dependencies and project configuration
-├── babel.config.js             # Babel configuration
-├── metro.config.js             # Metro bundler configuration  
-├── app.json                    # App metadata
-├── .gitignore                  # Git ignore rules
-└── screens/                    # Screen components directory
-    ├── HomeScreen.js           # Home dashboard with security score & alerts
-    ├── ScanVerifyScreen.js     # QR/Link/Text verification interface
-    ├── ResultScreen.js         # Verification results and recommendations
-    ├── AlertsScreen.js         # AI-detected fraud alerts listing
-    ├── ReportFraudScreen.js    # Fraud reporting interface
-    └── ProfileScreen.js        # User profile and settings
+├── frontend/                   # React Native mobile application
+│   ├── src/                   # Source code
+│   │   ├── screens/           # Screen components
+│   │   └── App.js             # Main app component
+│   ├── index.js               # React Native entry point
+│   ├── package.json           # Frontend dependencies
+│   └── README.md              # Frontend documentation
+├── backend/                    # Backend API server
+│   ├── src/                   # Source code
+│   │   ├── routes/            # API routes
+│   │   ├── controllers/       # Business logic
+│   │   ├── models/            # Data models
+│   │   ├── middleware/        # Custom middleware
+│   │   └── utils/             # Utility functions
+│   ├── server.js              # Server entry point
+│   ├── package.json           # Backend dependencies
+│   └── README.md              # Backend documentation
+├── README.md                  # Main project documentation
+└── .gitignore                 # Git ignore rules
 ```
 
 ## Key Components
@@ -66,24 +77,74 @@ Key dependencies as defined in package.json:
 
 ## Getting Started
 
-1. **Install Dependencies**:
+### Quick Start (All Components)
+
+From the root directory, you can manage both frontend and backend:
+
+```bash
+# Install all dependencies
+npm run install:all
+
+# Start frontend (React Native)
+npm run start:frontend
+
+# Start backend (API Server) 
+npm run start:backend
+
+# Run mobile app on Android
+npm run android
+
+# Run mobile app on iOS  
+npm run ios
+```
+
+### Frontend (React Native Mobile App)
+
+1. **Navigate to frontend directory**:
+   ```bash
+   cd frontend
+   ```
+
+2. **Install Dependencies**:
    ```bash
    npm install
    ```
 
-2. **Start Metro Bundler**:
+3. **Start Metro Bundler**:
    ```bash
    npm start
    ```
 
-3. **Run on Android**:
+4. **Run on Android**:
    ```bash
    npm run android
    ```
 
-4. **Run on iOS**:
+5. **Run on iOS**:
    ```bash
    npm run ios
+   ```
+
+### Backend (API Server)
+
+1. **Navigate to backend directory**:
+   ```bash
+   cd backend
+   ```
+
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Start Development Server**:
+   ```bash
+   npm run dev
+   ```
+
+4. **Start Production Server**:
+   ```bash
+   npm start
    ```
 
 ## Features Implementation

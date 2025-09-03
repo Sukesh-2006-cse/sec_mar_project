@@ -17,7 +17,8 @@ export default function AlertsScreen({ navigation }) {
       id: 1,
       type: 'Pump & Dump',
       entity: 'ABC Ltd Stock',
-      description: 'Unusual coordinated buying activity detected across multiple platforms. Price artificially inflated by 340% in 2 hours.',
+      description:
+        'Unusual coordinated buying activity detected across multiple platforms. Price artificially inflated by 340% in 2 hours.',
       risk: 'HIGH',
       confidence: 94,
       action: 'BLOCKED',
@@ -27,7 +28,8 @@ export default function AlertsScreen({ navigation }) {
       id: 2,
       type: 'Fake Investment Advisor',
       entity: 'XYZ Capital Advisors',
-      description: 'Unlicensed entity impersonating registered SEBI advisor. Using fake credentials and testimonials.',
+      description:
+        'Unlicensed entity impersonating registered SEBI advisor. Using fake credentials and testimonials.',
       risk: 'HIGH',
       confidence: 89,
       action: 'REPORTED',
@@ -37,7 +39,8 @@ export default function AlertsScreen({ navigation }) {
       id: 3,
       type: 'Deepfake Video',
       entity: 'DEF Corp CEO',
-      description: 'AI-generated video of company CEO making false claims about upcoming merger announcement.',
+      description:
+        'AI-generated video of company CEO making false claims about upcoming merger announcement.',
       risk: 'HIGH',
       confidence: 87,
       action: 'FLAGGED',
@@ -47,7 +50,8 @@ export default function AlertsScreen({ navigation }) {
       id: 4,
       type: 'Suspicious Trading App',
       entity: 'QuickTrade Pro',
-      description: 'Mobile app with fake reviews and suspicious withdrawal restrictions. Multiple user complaints about locked funds.',
+      description:
+        'Mobile app with fake reviews and suspicious withdrawal restrictions. Multiple user complaints about locked funds.',
       risk: 'MEDIUM',
       confidence: 76,
       action: 'MONITORING',
@@ -57,7 +61,8 @@ export default function AlertsScreen({ navigation }) {
       id: 5,
       type: 'Phishing Website',
       entity: 'fake-zerodha.com',
-      description: 'Website mimicking legitimate broker interface to steal login credentials and personal information.',
+      description:
+        'Website mimicking legitimate broker interface to steal login credentials and personal information.',
       risk: 'MEDIUM',
       confidence: 82,
       action: 'BLOCKED',
@@ -73,25 +78,38 @@ export default function AlertsScreen({ navigation }) {
 
   const getRiskColor = (risk) => {
     switch (risk) {
-      case 'HIGH': return '#EF4444';
-      case 'MEDIUM': return '#F59E0B';
-      case 'LOW': return '#10B981';
-      default: return '#6B7280';
+      case 'HIGH':
+        return '#EF4444';
+      case 'MEDIUM':
+        return '#F59E0B';
+      case 'LOW':
+        return '#10B981';
+      default:
+        return '#6B7280';
     }
   };
 
   const getActionColor = (action) => {
     switch (action) {
-      case 'BLOCKED': return '#EF4444';
-      case 'REPORTED': return '#F59E0B';
-      case 'FLAGGED': return '#3B82F6';
-      case 'MONITORING': return '#8B5CF6';
-      default: return '#6B7280';
+      case 'BLOCKED':
+        return '#EF4444';
+      case 'REPORTED':
+        return '#F59E0B';
+      case 'FLAGGED':
+        return '#3B82F6';
+      case 'MONITORING':
+        return '#8B5CF6';
+      default:
+        return '#6B7280';
     }
   };
 
-  const filteredAlerts = filter === 'all' ? alerts : 
-    alerts.filter(alert => alert.risk.toLowerCase() === filter.toLowerCase());
+  const filteredAlerts =
+    filter === 'all'
+      ? alerts
+      : alerts.filter(
+          (alert) => alert.risk.toLowerCase() === filter.toLowerCase()
+        );
 
   return (
     <View style={styles.container}>
@@ -99,7 +117,9 @@ export default function AlertsScreen({ navigation }) {
       <View style={styles.statsContainer}>
         {stats.map((stat, index) => (
           <View key={index} style={styles.statCard}>
-            <Text style={[styles.statNumber, { color: stat.color }]}>{stat.value}</Text>
+            <Text style={[styles.statNumber, { color: stat.color }]}>
+              {stat.value}
+            </Text>
             <Text style={styles.statLabel}>{stat.label}</Text>
           </View>
         ))}
@@ -112,14 +132,16 @@ export default function AlertsScreen({ navigation }) {
             key={filterOption}
             style={[
               styles.filterTab,
-              filter === filterOption && styles.activeFilterTab
+              filter === filterOption && styles.activeFilterTab,
             ]}
             onPress={() => setFilter(filterOption)}
           >
-            <Text style={[
-              styles.filterText,
-              filter === filterOption && styles.activeFilterText
-            ]}>
+            <Text
+              style={[
+                styles.filterText,
+                filter === filterOption && styles.activeFilterText,
+              ]}
+            >
               {filterOption.toUpperCase()}
             </Text>
           </TouchableOpacity>
@@ -132,26 +154,42 @@ export default function AlertsScreen({ navigation }) {
           <View key={alert.id} style={styles.alertCard}>
             <View style={styles.alertHeader}>
               <View style={styles.alertTitleRow}>
-                <Icon name="warning" size={20} color={getRiskColor(alert.risk)} />
+                <Icon
+                  name="warning"
+                  size={20}
+                  color={getRiskColor(alert.risk)}
+                />
                 <Text style={styles.alertType}>{alert.type}</Text>
               </View>
               <View style={styles.badgeContainer}>
-                <View style={[styles.riskBadge, { backgroundColor: getRiskColor(alert.risk) }]}>
+                <View
+                  style={[
+                    styles.riskBadge,
+                    { backgroundColor: getRiskColor(alert.risk) },
+                  ]}
+                >
                   <Text style={styles.badgeText}>{alert.risk}</Text>
                 </View>
-                <View style={[styles.actionBadge, { backgroundColor: getActionColor(alert.action) }]}>
+                <View
+                  style={[
+                    styles.actionBadge,
+                    { backgroundColor: getActionColor(alert.action) },
+                  ]}
+                >
                   <Text style={styles.badgeText}>{alert.action}</Text>
                 </View>
               </View>
             </View>
-            
+
             <Text style={styles.alertEntity}>{alert.entity}</Text>
             <Text style={styles.alertDescription}>{alert.description}</Text>
-            
+
             <View style={styles.alertFooter}>
               <View style={styles.confidenceContainer}>
                 <Icon name="psychology" size={16} color="#4F46E5" />
-                <Text style={styles.confidenceText}>{alert.confidence}% Confidence</Text>
+                <Text style={styles.confidenceText}>
+                  {alert.confidence}% Confidence
+                </Text>
               </View>
               <Text style={styles.alertTime}>{alert.time}</Text>
             </View>

@@ -29,19 +29,25 @@ export default function ProfileScreen({ navigation }) {
       title: 'Blockchain Wallet',
       subtitle: 'Manage your TrustX tokens and rewards',
       icon: 'account-balance-wallet',
-      onPress: () => Alert.alert('Blockchain Wallet', 'Wallet management feature coming soon!'),
+      onPress: () =>
+        Alert.alert(
+          'Blockchain Wallet',
+          'Wallet management feature coming soon!'
+        ),
     },
     {
       title: 'Verification History',
       subtitle: 'View your past scans and results',
       icon: 'history',
-      onPress: () => Alert.alert('History', 'Verification history feature coming soon!'),
+      onPress: () =>
+        Alert.alert('History', 'Verification history feature coming soon!'),
     },
     {
       title: 'Community Contributions',
       subtitle: 'Your fraud reports and community impact',
       icon: 'group',
-      onPress: () => Alert.alert('Community', 'Community features coming soon!'),
+      onPress: () =>
+        Alert.alert('Community', 'Community features coming soon!'),
     },
     {
       title: 'Privacy & Security',
@@ -59,21 +65,25 @@ export default function ProfileScreen({ navigation }) {
       title: 'About TrustX',
       subtitle: 'Learn more about our mission',
       icon: 'info-outline',
-      onPress: () => Alert.alert('About', 'TrustX v1.0.0\nAI + Blockchain Investor Protection Platform'),
+      onPress: () =>
+        Alert.alert(
+          'About',
+          'TrustX v1.0.0\nAI + Blockchain Investor Protection Platform'
+        ),
     },
   ];
 
   const handleLogout = () => {
-    Alert.alert(
-      'Logout',
-      'Are you sure you want to logout?',
-      [
-        { text: 'Cancel', style: 'cancel' },
-        { text: 'Logout', style: 'destructive', onPress: () => {
+    Alert.alert('Logout', 'Are you sure you want to logout?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Logout',
+        style: 'destructive',
+        onPress: () => {
           Alert.alert('Logged Out', 'You have been logged out successfully.');
-        }},
-      ]
-    );
+        },
+      },
+    ]);
   };
 
   return (
@@ -108,11 +118,13 @@ export default function ProfileScreen({ navigation }) {
         {/* Settings */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Settings</Text>
-          
+
           <View style={styles.settingRow}>
             <View style={styles.settingInfo}>
               <Text style={styles.settingTitle}>Push Notifications</Text>
-              <Text style={styles.settingSubtitle}>Receive alerts about new fraud threats</Text>
+              <Text style={styles.settingSubtitle}>
+                Receive alerts about new fraud threats
+              </Text>
             </View>
             <Switch
               value={notificationsEnabled}
@@ -125,7 +137,9 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.settingRow}>
             <View style={styles.settingInfo}>
               <Text style={styles.settingTitle}>Biometric Authentication</Text>
-              <Text style={styles.settingSubtitle}>Use fingerprint or face unlock</Text>
+              <Text style={styles.settingSubtitle}>
+                Use fingerprint or face unlock
+              </Text>
             </View>
             <Switch
               value={biometricEnabled}
@@ -138,7 +152,9 @@ export default function ProfileScreen({ navigation }) {
           <View style={styles.settingRow}>
             <View style={styles.settingInfo}>
               <Text style={styles.settingTitle}>Auto-Scan Links</Text>
-              <Text style={styles.settingSubtitle}>Automatically verify links you click</Text>
+              <Text style={styles.settingSubtitle}>
+                Automatically verify links you click
+              </Text>
             </View>
             <Switch
               value={autoScanEnabled}
@@ -153,7 +169,11 @@ export default function ProfileScreen({ navigation }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>More Options</Text>
           {menuItems.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.menuItem} onPress={item.onPress}>
+            <TouchableOpacity
+              key={index}
+              style={styles.menuItem}
+              onPress={item.onPress}
+            >
               <Icon name={item.icon} size={24} color="#4F46E5" />
               <View style={styles.menuContent}>
                 <Text style={styles.menuTitle}>{item.title}</Text>
@@ -169,7 +189,9 @@ export default function ProfileScreen({ navigation }) {
           <Icon name="verified" size={24} color="#065F46" />
           <View style={styles.blockchainStatusContent}>
             <Text style={styles.blockchainTitle}>Blockchain Connected</Text>
-            <Text style={styles.blockchainSubtitle}>All your activities are securely recorded</Text>
+            <Text style={styles.blockchainSubtitle}>
+              All your activities are securely recorded
+            </Text>
           </View>
         </View>
 

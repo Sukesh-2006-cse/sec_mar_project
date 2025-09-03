@@ -14,17 +14,33 @@ export default function ResultScreen({ route, navigation }) {
   const { inputType, inputData, riskScore } = route.params;
 
   const getRiskLevel = (score) => {
-    if (score >= 80) return { level: 'HIGH', color: '#EF4444', icon: 'dangerous' };
-    if (score >= 50) return { level: 'MEDIUM', color: '#F59E0B', icon: 'warning' };
+    if (score >= 80) {
+      return { level: 'HIGH', color: '#EF4444', icon: 'dangerous' };
+    }
+    if (score >= 50) {
+      return { level: 'MEDIUM', color: '#F59E0B', icon: 'warning' };
+    }
     return { level: 'LOW', color: '#10B981', icon: 'verified' };
   };
 
   const risk = getRiskLevel(riskScore);
 
   const analysisResults = [
-    { category: 'SEBI Registration', status: riskScore > 70 ? 'Not Found' : 'Verified', passed: riskScore <= 70 },
-    { category: 'Domain Reputation', status: riskScore > 60 ? 'Suspicious' : 'Clean', passed: riskScore <= 60 },
-    { category: 'Content Analysis', status: riskScore > 50 ? 'Fraud Patterns Detected' : 'No Issues', passed: riskScore <= 50 },
+    {
+      category: 'SEBI Registration',
+      status: riskScore > 70 ? 'Not Found' : 'Verified',
+      passed: riskScore <= 70,
+    },
+    {
+      category: 'Domain Reputation',
+      status: riskScore > 60 ? 'Suspicious' : 'Clean',
+      passed: riskScore <= 60,
+    },
+    {
+      category: 'Content Analysis',
+      status: riskScore > 50 ? 'Fraud Patterns Detected' : 'No Issues',
+      passed: riskScore <= 50,
+    },
     { category: 'Blockchain Verification', status: 'Recorded', passed: true },
   ];
 
@@ -50,14 +66,18 @@ export default function ResultScreen({ route, navigation }) {
       {/* Quick Recommendation */}
       <View style={styles.recommendationCard}>
         <Text style={styles.recommendationTitle}>
-          {risk.level === 'HIGH' ? '🚨 DO NOT PROCEED' :
-           risk.level === 'MEDIUM' ? '⚠️ PROCEED WITH CAUTION' :
-           '✅ APPEARS SAFE'}
+          {risk.level === 'HIGH'
+            ? '🚨 DO NOT PROCEED'
+            : risk.level === 'MEDIUM'
+            ? '⚠️ PROCEED WITH CAUTION'
+            : '✅ APPEARS SAFE'}
         </Text>
         <Text style={styles.recommendationText}>
-          {risk.level === 'HIGH' ? 'High probability of fraud detected. Avoid this investment opportunity.' :
-           risk.level === 'MEDIUM' ? 'Some suspicious indicators found. Verify independently before proceeding.' :
-           'No major red flags detected, but always do your own research.'}
+          {risk.level === 'HIGH'
+            ? 'High probability of fraud detected. Avoid this investment opportunity.'
+            : risk.level === 'MEDIUM'
+            ? 'Some suspicious indicators found. Verify independently before proceeding.'
+            : 'No major red flags detected, but always do your own research.'}
         </Text>
       </View>
 
@@ -66,17 +86,19 @@ export default function ResultScreen({ route, navigation }) {
         <Text style={styles.sectionTitle}>🧠 AI Analysis Results</Text>
         {analysisResults.map((result, index) => (
           <View key={index} style={styles.analysisRow}>
-            <Icon 
-              name={result.passed ? 'check-circle' : 'cancel'} 
-              size={20} 
-              color={result.passed ? '#10B981' : '#EF4444'} 
+            <Icon
+              name={result.passed ? 'check-circle' : 'cancel'}
+              size={20}
+              color={result.passed ? '#10B981' : '#EF4444'}
             />
             <View style={styles.analysisContent}>
               <Text style={styles.analysisCategory}>{result.category}</Text>
-              <Text style={[
-                styles.analysisStatus,
-                { color: result.passed ? '#10B981' : '#EF4444' }
-              ]}>
+              <Text
+                style={[
+                  styles.analysisStatus,
+                  { color: result.passed ? '#10B981' : '#EF4444' },
+                ]}
+              >
                 {result.status}
               </Text>
             </View>
@@ -94,9 +116,7 @@ export default function ResultScreen({ route, navigation }) {
             <Text style={styles.blockchainSubtitle}>
               Transaction ID: 0x1a2b3c...def456
             </Text>
-            <Text style={styles.blockchainSubtitle}>
-              Block: #2,847,362
-            </Text>
+            <Text style={styles.blockchainSubtitle}>Block: #2,847,362</Text>
           </View>
         </View>
       </View>
@@ -109,7 +129,7 @@ export default function ResultScreen({ route, navigation }) {
         </TouchableOpacity>
 
         {risk.level === 'HIGH' && (
-          <TouchableOpacity 
+          <TouchableOpacity
             style={styles.reportButton}
             onPress={() => navigation.navigate('Report')}
           >

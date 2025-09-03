@@ -23,7 +23,7 @@ export default function ScanVerifyScreen({ navigation }) {
     }
 
     setIsLoading(true);
-    
+
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
@@ -44,11 +44,16 @@ export default function ScanVerifyScreen({ navigation }) {
 
   const getPlaceholder = () => {
     switch (activeTab) {
-      case 'qr': return 'Scan QR code or paste decoded text';
-      case 'link': return 'Paste suspicious URL or app link';
-      case 'text': return 'Paste WhatsApp tip, SMS, or investment advice';
-      case 'advisor': return 'Enter advisor name or registration number';
-      default: return 'Enter text to verify';
+      case 'qr':
+        return 'Scan QR code or paste decoded text';
+      case 'link':
+        return 'Paste suspicious URL or app link';
+      case 'text':
+        return 'Paste WhatsApp tip, SMS, or investment advice';
+      case 'advisor':
+        return 'Enter advisor name or registration number';
+      default:
+        return 'Enter text to verify';
     }
   };
 
@@ -62,15 +67,17 @@ export default function ScanVerifyScreen({ navigation }) {
             style={[styles.tab, activeTab === tab.id && styles.activeTab]}
             onPress={() => setActiveTab(tab.id)}
           >
-            <Icon 
-              name={tab.icon} 
-              size={20} 
-              color={activeTab === tab.id ? '#4F46E5' : '#6B7280'} 
+            <Icon
+              name={tab.icon}
+              size={20}
+              color={activeTab === tab.id ? '#4F46E5' : '#6B7280'}
             />
-            <Text style={[
-              styles.tabText, 
-              activeTab === tab.id && styles.activeTabText
-            ]}>
+            <Text
+              style={[
+                styles.tabText,
+                activeTab === tab.id && styles.activeTabText,
+              ]}
+            >
               {tab.title}
             </Text>
           </TouchableOpacity>
@@ -80,11 +87,15 @@ export default function ScanVerifyScreen({ navigation }) {
       {/* Input Section */}
       <View style={styles.inputSection}>
         <Text style={styles.inputLabel}>
-          {activeTab === 'qr' ? 'QR Code Content' :
-           activeTab === 'link' ? 'URL to Verify' :
-           activeTab === 'text' ? 'Suspicious Text' : 'Advisor Information'}
+          {activeTab === 'qr'
+            ? 'QR Code Content'
+            : activeTab === 'link'
+            ? 'URL to Verify'
+            : activeTab === 'text'
+            ? 'Suspicious Text'
+            : 'Advisor Information'}
         </Text>
-        
+
         <TextInput
           style={styles.textInput}
           placeholder={getPlaceholder()}
@@ -108,37 +119,59 @@ export default function ScanVerifyScreen({ navigation }) {
         <View style={styles.featureList}>
           {activeTab === 'qr' && (
             <>
-              <Text style={styles.featureItem}>• QR code destination analysis</Text>
-              <Text style={styles.featureItem}>• Domain reputation checking</Text>
-              <Text style={styles.featureItem}>• SEBI registration verification</Text>
+              <Text style={styles.featureItem}>
+                • QR code destination analysis
+              </Text>
+              <Text style={styles.featureItem}>
+                • Domain reputation checking
+              </Text>
+              <Text style={styles.featureItem}>
+                • SEBI registration verification
+              </Text>
             </>
           )}
           {activeTab === 'link' && (
             <>
-              <Text style={styles.featureItem}>• Website credibility scoring</Text>
-              <Text style={styles.featureItem}>• SSL certificate validation</Text>
-              <Text style={styles.featureItem}>• Fake trading app detection</Text>
+              <Text style={styles.featureItem}>
+                • Website credibility scoring
+              </Text>
+              <Text style={styles.featureItem}>
+                • SSL certificate validation
+              </Text>
+              <Text style={styles.featureItem}>
+                • Fake trading app detection
+              </Text>
             </>
           )}
           {activeTab === 'text' && (
             <>
-              <Text style={styles.featureItem}>• Pump & dump pattern detection</Text>
-              <Text style={styles.featureItem}>• Unrealistic return promises</Text>
-              <Text style={styles.featureItem}>• Urgency language analysis</Text>
+              <Text style={styles.featureItem}>
+                • Pump & dump pattern detection
+              </Text>
+              <Text style={styles.featureItem}>
+                • Unrealistic return promises
+              </Text>
+              <Text style={styles.featureItem}>
+                • Urgency language analysis
+              </Text>
             </>
           )}
           {activeTab === 'advisor' && (
             <>
-              <Text style={styles.featureItem}>• SEBI registration verification</Text>
+              <Text style={styles.featureItem}>
+                • SEBI registration verification
+              </Text>
               <Text style={styles.featureItem}>• Impersonation detection</Text>
-              <Text style={styles.featureItem}>• Historical complaint checking</Text>
+              <Text style={styles.featureItem}>
+                • Historical complaint checking
+              </Text>
             </>
           )}
         </View>
       </View>
 
       {/* Verify Button */}
-      <TouchableOpacity 
+      <TouchableOpacity
         style={[styles.verifyButton, isLoading && styles.disabledButton]}
         onPress={handleVerify}
         disabled={isLoading}
@@ -148,7 +181,9 @@ export default function ScanVerifyScreen({ navigation }) {
         ) : (
           <>
             <Icon name="security" size={24} color="white" />
-            <Text style={styles.verifyButtonText}>Verify with AI + Blockchain</Text>
+            <Text style={styles.verifyButtonText}>
+              Verify with AI + Blockchain
+            </Text>
           </>
         )}
       </TouchableOpacity>
